@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -54,7 +56,7 @@ app.get('/bad', (req, res) => {
   });
 });
 
-//bind the app to this port on our machine
-app.listen(3000, () =>{
-  console.log('Server is started on port 3000');
+//Heroku will set port, if Heroku doesn't default port is 3000
+app.listen(port, () =>{
+  console.log(`Server is started on port ${port}`);
 });
